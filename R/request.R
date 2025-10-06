@@ -14,7 +14,7 @@ get_package_version <- function(test=FALSE) {
     desc <- read.dcf(file.path("..", "DESCRIPTION"))
     version <- desc[1, "Version"]
   } else {
-    version <- utils::packageversion("cecilr")
+    version <- utils::packageVersion("cecilr")
   }
   version
 }
