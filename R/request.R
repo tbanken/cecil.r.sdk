@@ -26,13 +26,13 @@ cecil_request <- function(endpoint, method = "GET", body = NULL) {
 
   version <- get_package_version()
 
-  req <- request(paste0(base_url, endpoint)) %>%
-    req_auth_basic(user = api_key, password = "") %>%
-    req_method(method) %>%
+  req <- request(paste0(base_url, endpoint)) |>
+    req_auth_basic(user = api_key, password = "") |>
+    req_method(method) |>
     req_headers("cecil-r-sdk-version" = version)
 
-  if (!is.null(body)) req <- req %>% req_body_json(body)
-  res <- req %>% req_perform()
+  if (!is.null(body)) req <- req |> req_body_json(body)
+  res <- req |> req_perform()
   resp_body_json(res, simplifyVector = TRUE)
 }
 
