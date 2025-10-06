@@ -29,7 +29,7 @@ create_aoi <- function(external_ref, geometry) {
 #' Title
 #'
 #' @returns
-#' @export
+#' @export purrr
 #'
 #' @examples
 list_aois <- function() {

@@ -27,6 +27,9 @@ load_terra <- function(data_request_id) {
   rast_from_metadata(metadata)
 }
 
+
+#' @import terra
+NULL
 rast_from_metadata <- function(metadata) {
   raster <- rast(metadata$files$url)
   metags(raster) <- c(
@@ -46,7 +49,7 @@ rast_from_metadata <- function(metadata) {
 #' @param data_request_id
 #'
 #' @returns
-#' @export
+#' @export nanoparquet
 #'
 #' @examples
 load_dataframe <- function(data_request_id) {

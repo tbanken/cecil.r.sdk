@@ -25,7 +25,7 @@ create_data_request <- function(aoi_id, dataset_id, external_ref = NULL) {
 #' Title
 #'
 #' @returns
-#' @export
+#' @export purrr
 #'
 #' @examples
 list_data_requests <- function() {

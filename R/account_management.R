@@ -29,7 +29,7 @@ create_user <- function(first_name, last_name, email) {
 #' Title
 #'
 #' @returns
-#' @export
+#' @export purrr
 #'
 #' @examples
 list_users <- function() {
