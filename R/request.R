@@ -9,9 +9,14 @@ set_auth <- function() {
   api_key
 }
 
-get_package_version <- function(path = "..") {
-  desc <- read.dcf(file.path(path, "DESCRIPTION"))
-  desc[1, "Version"]
+get_package_version <- function(test=FALSE) {
+  if(test) {
+    desc <- read.dcf(file.path("..", "DESCRIPTION"))
+    version <- desc[1, "Version"]
+  } else {
+    version <- utils::packageversion("cecilr")
+  }
+  version
 }
 
 cecil_request <- function(endpoint, method = "GET", body = NULL) {
