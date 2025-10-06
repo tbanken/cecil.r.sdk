@@ -1,0 +1,25 @@
+Package: cecilr
+Type: Package
+Title: Cecil SDK for R
+Version: 0.0.1
+Authors@R: c(
+    person(
+      "Ted", "Banken",
+      email = "tedbanken@example.com",
+      role = c("aut", "cre")
+    ),
+    person(
+    "Tom", "Walker",
+    email="tom@cecil.earth",
+    role = c("aut", "cre")
+    )
+  )
+Description: More about what it does (maybe more than one line).
+    Continuation lines should be indented.
+License: MIT License
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.3.3

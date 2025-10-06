@@ -1,0 +1,41 @@
+library(httr2)
+# TODO implement skip auth, errors
+# TODO fix camelCase -> snake_case
+# read in datetime correctly
+
+set_auth <- function() {
+  # Sys.setenv(CECIL_API_KEY = key)
+  api_key <- Sys.getenv("CECIL_API_KEY")
+  api_key
+}
+
+get_package_version <- function(path = "..") {
+  desc <- read.dcf(file.path(path, "DESCRIPTION"))
+  desc[1, "Version"]
+}
+
+cecil_request <- function(endpoint, method = "GET", body = NULL) {
+  base_url <- "https://api.cecil.earth"
+  api_key <- set_auth()
+  if (api_key == "") stop("Set your API key with set_cecil_api_key()")
+
+  version <- get_package_version()
+
+  req <- request(paste0(base_url, endpoint)) %>%
+    req_auth_basic(user = api_key, password = "") %>%
+    req_method(method) %>%
+    req_headers("cecil-r-sdk-version" = version)
+
+  if (!is.null(body)) req <- req %>% req_body_json(body)
+  res <- req %>% req_perform()
+  resp_body_json(res, simplifyVector = TRUE)
+}
+
+
+
+
+# Some useful keyboard shortcuts for package authoring:
+#
+#   Install Package:           'Ctrl + Shift + B'
+#   Check Package:             'Ctrl + Shift + E'
+#   Test Package:              'Ctrl + Shift + T'
