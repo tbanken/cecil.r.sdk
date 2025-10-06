@@ -11,7 +11,7 @@ Authors@R: c(
     person(
     "Tom", "Walker",
     email="tom@cecil.earth",
-    role = c("aut", "cre")
+    role = c("aut")
     )
   )
 Description: More about what it does (maybe more than one line).
