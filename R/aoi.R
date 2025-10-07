@@ -1,5 +1,4 @@
 # aoi
-library(purrr)
 #' Title
 #'
 #' @param external_ref

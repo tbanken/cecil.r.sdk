@@ -1,4 +1,3 @@
-library(httr2)
 # TODO implement skip auth, errors
 # TODO fix camelCase -> snake_case
 # read in datetime correctly
@@ -21,7 +20,7 @@ get_package_version <- function(test=FALSE) {
   version
 }
 
-#' @importFrom httr2 request req_auth_basic req_method req_headers req_perform resp_body_json
+#' @importFrom httr2 request req_auth_basic req_method req_headers req_body_json req_perform resp_body_json
 cecil_request <- function(endpoint, method = "GET", body = NULL) {
   base_url <- "https://api.cecil.earth"
   api_key <- set_auth()

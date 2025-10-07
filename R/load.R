@@ -1,6 +1,4 @@
-# load raster
-library(terra)
-library(nanoparquet)
+# load raster and vector
 
 # TODO finish and test load dataframe
 

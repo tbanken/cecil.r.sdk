@@ -1,4 +1,3 @@
-library(purrr)
 # data request
 #' Title
 #'

@@ -1,5 +1,4 @@
 # account management
-library(purrr)
 #' Title
 #'
 #' @param first_name
