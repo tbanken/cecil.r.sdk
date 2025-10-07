@@ -25,8 +25,8 @@ create_data_request <- function(aoi_id, dataset_id, external_ref = NULL) {
 #' Title
 #'
 #' @returns
-#' @export purrr
-#'
+#' @export
+#' @importFrom purrr pmap
 #' @examples
 list_data_requests <- function() {
   resp <- cecil_request("/v0/data-requests")

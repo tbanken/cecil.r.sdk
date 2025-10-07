@@ -29,8 +29,8 @@ create_user <- function(first_name, last_name, email) {
 #' Title
 #'
 #' @returns
-#' @export purrr
-#'
+#' @export
+#' @importFrom purrr pmap
 #' @examples
 list_users <- function() {
   resp <- cecil_request("/v0/users")

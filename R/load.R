@@ -10,7 +10,7 @@ library(nanoparquet)
 #'
 #' @returns
 #' @export
-#'
+#' @importFrom purrr pmap
 #' @examples
 load_terra <- function(data_request_id) {
   full_endpoint <- paste0("/v0/data-requests/", data_request_id, "/metadata")
@@ -28,7 +28,7 @@ load_terra <- function(data_request_id) {
 }
 
 
-#' @import terra
+#' @importFrom terra rast
 NULL
 rast_from_metadata <- function(metadata) {
   raster <- rast(metadata$files$url)
@@ -49,8 +49,8 @@ rast_from_metadata <- function(metadata) {
 #' @param data_request_id
 #'
 #' @returns
-#' @export nanoparquet
-#'
+#' @export
+#' @importFrom nanoparquet read_parquet
 #' @examples
 load_dataframe <- function(data_request_id) {
   full_endpoint <- paste0("/v0/data-requests/", data_request_id, "/parquet-files")

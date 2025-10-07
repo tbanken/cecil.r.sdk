@@ -29,8 +29,8 @@ create_aoi <- function(external_ref, geometry) {
 #' Title
 #'
 #' @returns
-#' @export purrr
-#'
+#' @export
+#' @importFrom purrr pmap
 #' @examples
 list_aois <- function() {
   resp <- cecil_request("/v0/aois")

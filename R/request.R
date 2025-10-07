@@ -9,18 +9,19 @@ set_auth <- function() {
   api_key
 }
 
+
+#' @importFrom utils packageVersion
 get_package_version <- function(test=FALSE) {
   if(test) {
     desc <- read.dcf(file.path("..", "DESCRIPTION"))
     version <- desc[1, "Version"]
   } else {
-    version <- as.character(utils::packageVersion("cecilr"))
+    version <- as.character(packageVersion("cecilr"))
   }
   version
 }
 
-#' @import httr2
-NULL
+#' @importFrom httr2 request req_auth_basic req_method req_headers req_perform resp_body_json
 cecil_request <- function(endpoint, method = "GET", body = NULL) {
   base_url <- "https://api.cecil.earth"
   api_key <- set_auth()
