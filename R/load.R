@@ -27,7 +27,6 @@ load_terra <- function(data_request_id) {
 
 
 #' @importFrom terra rast metags
-NULL
 rast_from_metadata <- function(metadata) {
   raster <- rast(metadata$files$url)
   metags(raster) <- c(
