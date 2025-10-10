@@ -1,4 +1,5 @@
 # aoi
+#TODO test passing in geojson string
 #' Title
 #'
 #' @param external_ref
@@ -6,13 +7,19 @@
 #'
 #' @returns
 #' @export
-#'
+#' @importFrom jsonlite fromJSON
 #' @examples
 create_aoi <- function(external_ref, geometry) {
-  if (geometry$type != "Polygon" &&
-    geometry$type != "MultiPolygon") {
-    stop(paste0(geometry$type, " is not a valid geometry type.
-                Polygon and Multipolygon are the only valid geometry types."))
+  if (is.character(geometry)) {
+    geometry <- fromJSON(geometry)
+  }
+
+  if (!geometry$type %in% c("Polygon", "MultiPolygon")) {
+    stop(paste0(
+      geometry$type,
+      " is not a valid geometry type. ",
+      "Polygon and MultiPolygon are the only valid geometry types."
+    ))
   }
   model <- AOICreate$new(external_ref = external_ref, geometry = geometry)
   resp <- cecil_request("/v0/aois", "POST", body = model$as_list())

@@ -1,7 +1,5 @@
 # load raster and vector
 
-# TODO finish and test load dataframe
-
 #' Title
 #'
 #' @param data_request_id
@@ -24,7 +22,7 @@ load_terra <- function(data_request_id) {
   rast_from_metadata(metadata)
 }
 
-
+#TODO fix metadata, also add in implementation of names, etc
 #' @importFrom terra rast metags
 rast_from_metadata <- function(metadata) {
   raster <- rast(metadata$files$url)
@@ -40,6 +38,7 @@ rast_from_metadata <- function(metadata) {
 }
 
 # TODO finish and test
+# TODO concerns about geometry type, saved in as geojson in geometry column
 #' Title
 #'
 #' @param data_request_id
