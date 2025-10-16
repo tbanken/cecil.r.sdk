@@ -25,6 +25,7 @@ load_terra <- function(data_request_id) {
 #TODO fix metadata, also add in implementation of names, etc
 #' @importFrom terra rast metags
 rast_from_metadata <- function(metadata) {
+  print(metadata$files)
   raster <- rast(metadata$files$url)
   #metags(raster) <- c(
   #  paste0("provider_name=", metadata$provider_name),
@@ -38,7 +39,6 @@ rast_from_metadata <- function(metadata) {
 }
 
 # TODO finish and test
-# TODO concerns about geometry type, saved in as geojson in geometry column
 #' Title
 #'
 #' @param data_request_id
@@ -46,11 +46,24 @@ rast_from_metadata <- function(metadata) {
 #' @returns
 #' @export
 #' @importFrom nanoparquet read_parquet
+#' @importFrom sf st_as_sfc st_sf st_geometrycollection
+#' @importFrom jsonlite fromJSON toJSON
 #' @examples
 load_dataframe <- function(data_request_id) {
   full_endpoint <- paste0("/v0/data-requests/", data_request_id, "/parquet-files")
   resp <- cecil_request(full_endpoint)
-  #datarequest parquet files object
+
   df_ls <- lapply(metadata$files, read_parquet)
-  do.call(cbind,df_ls)
+  df <- do.call(cbind,df_ls)
+
+  geoms <- lapply(df$geojson, function(gj) {
+    if (is.na(gj) || gj == "") return(st_geometrycollection())
+    st_read(fromJSON(gj, simplifyVector = FALSE) |> toJSON(auto_unbox = TRUE), quiet = TRUE)
+  })
+
+  # Ensure each element is of class sfc
+  geoms <- lapply(geoms, st_geometry)
+  sfc <- do.call(c, geoms)
+
+  st_sf(df[ , !(names(df) %in% "geojson")], geometry = sfc)
 }
