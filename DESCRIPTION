@@ -1,4 +1,4 @@
-Package: cecilr
+Package: cecil
 Type: Package
 Title: Cecil SDK for R
 Version: 0.0.1
@@ -9,8 +9,8 @@ Authors@R: c(
       role = c("aut", "cre")
     ),
     person(
-    "Tom", "Walker",
-    email="tom@cecil.earth",
+    "Brian", "Amadio",
+    email="brian@cecil.earth",
     role = c("aut")
     )
   )

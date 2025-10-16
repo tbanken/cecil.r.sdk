@@ -38,7 +38,7 @@ rast_from_metadata <- function(metadata) {
   raster
 }
 
-# TODO finish and test
+# TODO test
 #' Title
 #'
 #' @param data_request_id
