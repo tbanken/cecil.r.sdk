@@ -25,8 +25,8 @@ load_terra <- function(data_request_id) {
 #TODO fix metadata, also add in implementation of names, etc
 #' @importFrom terra rast metags
 rast_from_metadata <- function(metadata) {
-  print(metadata$files)
   raster <- rast(metadata$files$url)
+  names(raster) <- metadata$files$bands[[1]]$variable_name
   #metags(raster) <- c(
   #  paste0("provider_name=", metadata$provider_name),
   #  paste0("dataset_id=", metadata$dataset_id),
