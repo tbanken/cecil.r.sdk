@@ -15,7 +15,7 @@ get_package_version <- function(test=FALSE) {
     desc <- read.dcf(file.path("..", "DESCRIPTION"))
     version <- desc[1, "Version"]
   } else {
-    version <- as.character(packageVersion("cecilr"))
+    version <- as.character(packageVersion("cecil"))
   }
   version
 }
