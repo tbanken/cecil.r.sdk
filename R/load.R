@@ -45,7 +45,7 @@ rast_from_metadata <- function(metadata) {
 #'
 #' @returns
 #' @export
-#' @importFrom nanoparquet read_parquet
+#' @importFrom arrow read_parquet
 #' @importFrom sf st_as_sfc st_sf st_geometrycollection
 #' @importFrom jsonlite fromJSON toJSON
 #' @examples
