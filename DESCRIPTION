@@ -1,7 +1,7 @@
 Package: cecil.r.sdk
 Type: Package
 Title: Cecil SDK for R
-Version: 0.0.1
+Version: 0.0.28
 Authors@R: c(
     person(
       "Ted", "Banken",
