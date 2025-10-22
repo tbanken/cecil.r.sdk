@@ -2,13 +2,16 @@
 % Please edit documentation in R/data_request.R
 \name{get_data_request}
 \alias{get_data_request}
-\title{Title}
+\title{get data request}
 \usage{
 get_data_request(id)
 }
 \arguments{
-\item{id}{}
+\item{id}{Data request ID}
+}
+\value{
+DataRequest
 }
 \description{
-Title
+get data request
 }

@@ -1,10 +1,10 @@
 # load raster and vector
 
-#' Title
+#' load terra
 #'
-#' @param data_request_id
+#' @param data_request_id ID for data request to load
 #'
-#' @returns
+#' @returns SpatRaster
 #' @export
 #' @examples
 load_terra <- function(data_request_id) {
@@ -22,7 +22,7 @@ load_terra <- function(data_request_id) {
   rast_from_metadata(metadata)
 }
 
-#TODO fix metadata, also add in implementation of names, etc
+#TODO fix metadata etc
 #' @importFrom terra rast metags
 rast_from_metadata <- function(metadata) {
   raster <- rast(metadata$files$url)
@@ -38,18 +38,17 @@ rast_from_metadata <- function(metadata) {
   raster
 }
 
-# TODO test
-#' Title
+#' load sf
 #'
-#' @param data_request_id
+#' @param data_request_id ID for data request to load
 #'
-#' @returns
+#' @returns sf
 #' @export
 #' @importFrom arrow read_parquet
 #' @importFrom sf st_as_sfc st_sf st_geometrycollection
 #' @importFrom jsonlite fromJSON toJSON
 #' @examples
-load_dataframe <- function(data_request_id) {
+load_sf <- function(data_request_id) {
   full_endpoint <- paste0("/v0/data-requests/", data_request_id, "/parquet-files")
   resp <- cecil_request(full_endpoint)
 

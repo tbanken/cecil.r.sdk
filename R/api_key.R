@@ -1,9 +1,9 @@
 # TODO test both
 
-# rotate api key
-#' Title
+
+#' rotate api key
 #'
-#' @returns
+#' @returns RotateAPIKey
 #' @export
 #'
 #' @examples
@@ -12,12 +12,12 @@ rotate_api_key <- function() {
   resp <- cecil_request("/v0/api-key/rotate", "POST", model$as_list())
   RotateAPIKey$new(resp$newApiKey)
 }
-# recover api key
-#' Title
+
+#' recover api key
 #'
-#' @param email
+#' @param email Cecil user email
 #'
-#' @returns
+#' @returns RecoverAPIKey
 #' @export
 #'
 #' @examples

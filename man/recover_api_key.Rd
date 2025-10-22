@@ -2,13 +2,16 @@
 % Please edit documentation in R/api_key.R
 \name{recover_api_key}
 \alias{recover_api_key}
-\title{Title}
+\title{recover api key}
 \usage{
 recover_api_key(email)
 }
 \arguments{
-\item{email}{}
+\item{email}{Cecil user email}
+}
+\value{
+RecoverAPIKey
 }
 \description{
-Title
+recover api key
 }

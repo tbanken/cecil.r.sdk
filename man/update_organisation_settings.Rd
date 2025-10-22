@@ -2,13 +2,16 @@
 % Please edit documentation in R/account_management.R
 \name{update_organisation_settings}
 \alias{update_organisation_settings}
-\title{Title}
+\title{update organisation settings}
 \usage{
 update_organisation_settings(monthly_data_request_limit = 50000)
 }
 \arguments{
-\item{monthly_data_request_limit}{}
+\item{monthly_data_request_limit}{Monthly data request limit}
+}
+\value{
+OrganisationSettings
 }
 \description{
-Title
+update organisation settings
 }

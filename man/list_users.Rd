@@ -2,10 +2,13 @@
 % Please edit documentation in R/account_management.R
 \name{list_users}
 \alias{list_users}
-\title{Title}
+\title{list users}
 \usage{
 list_users()
 }
+\value{
+User list
+}
 \description{
-Title
+list users
 }

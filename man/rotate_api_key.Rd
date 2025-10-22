@@ -2,10 +2,13 @@
 % Please edit documentation in R/api_key.R
 \name{rotate_api_key}
 \alias{rotate_api_key}
-\title{Title}
+\title{rotate api key}
 \usage{
 rotate_api_key()
 }
+\value{
+RotateAPIKey
+}
 \description{
-Title
+rotate api key
 }

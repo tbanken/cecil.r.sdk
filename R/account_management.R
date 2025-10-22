@@ -1,11 +1,11 @@
 # account management
-#' Title
+#' create user
 #'
-#' @param first_name
-#' @param last_name
-#' @param email
+#' @param first_name First name
+#' @param last_name Last name
+#' @param email Email
 #'
-#' @returns
+#' @returns User
 #' @export
 #'
 #' @examples
@@ -25,9 +25,9 @@ create_user <- function(first_name, last_name, email) {
     resp$createdBy
   )
 }
-#' Title
+#' list users
 #'
-#' @returns
+#' @returns User list
 #' @export
 #' @importFrom purrr pmap
 #' @examples
@@ -45,11 +45,11 @@ list_users <- function() {
   })
 }
 
-#' Title
+#' get user
 #'
-#' @param id
+#' @param id User ID
 #'
-#' @returns
+#' @returns User
 #' @export
 #'
 #' @examples
@@ -67,10 +67,9 @@ get_user <- function(id) {
   )
 }
 
-# update organization settings
-#' Title
+#' get organisation settings
 #'
-#' @returns
+#' @returns OrganisationSettings
 #' @export
 #'
 #' @examples
@@ -79,11 +78,11 @@ get_organisation_settings <- function() {
   OrganisationSettings$new(monthly_data_request_limit = resp$monthlyDataRequestLimit)
 }
 
-#' Title
+#' update organisation settings
 #'
-#' @param monthly_data_request_limit
+#' @param monthly_data_request_limit Monthly data request limit
 #'
-#' @returns
+#' @returns OrganisationSettings
 #' @export
 #'
 #' @examples

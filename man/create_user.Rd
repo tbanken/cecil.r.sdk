@@ -2,13 +2,20 @@
 % Please edit documentation in R/account_management.R
 \name{create_user}
 \alias{create_user}
-\title{Title}
+\title{create user}
 \usage{
 create_user(first_name, last_name, email)
 }
 \arguments{
-\item{email}{}
+\item{first_name}{First name}
+
+\item{last_name}{Last name}
+
+\item{email}{Email}
+}
+\value{
+User
 }
 \description{
-Title
+create user
 }

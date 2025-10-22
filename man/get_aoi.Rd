@@ -2,13 +2,16 @@
 % Please edit documentation in R/aoi.R
 \name{get_aoi}
 \alias{get_aoi}
-\title{Title}
+\title{get aoi}
 \usage{
 get_aoi(id)
 }
 \arguments{
-\item{id}{}
+\item{id}{AOI ID}
+}
+\value{
+AOI
 }
 \description{
-Title
+get aoi
 }

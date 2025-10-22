@@ -2,13 +2,18 @@
 % Please edit documentation in R/aoi.R
 \name{create_aoi}
 \alias{create_aoi}
-\title{Title}
+\title{create aoi}
 \usage{
 create_aoi(external_ref, geometry)
 }
 \arguments{
-\item{geometry}{}
+\item{external_ref}{Optional name for AOI}
+
+\item{geometry}{geometry as list of lists or JSON}
+}
+\value{
+AOIRecord
 }
 \description{
-Title
+create aoi
 }

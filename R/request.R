@@ -3,7 +3,6 @@
 # read in datetime correctly
 
 set_auth <- function() {
-  # Sys.setenv(CECIL_API_KEY = key)
   api_key <- Sys.getenv("CECIL_API_KEY")
   api_key
 }
@@ -15,7 +14,7 @@ get_package_version <- function(test=FALSE) {
     desc <- read.dcf(file.path("..", "DESCRIPTION"))
     version <- desc[1, "Version"]
   } else {
-    version <- as.character(packageVersion("cecil"))
+    version <- as.character(packageVersion("cecil.r.sdk"))
   }
   version
 }
@@ -41,8 +40,4 @@ cecil_request <- function(endpoint, method = "GET", body = NULL) {
 
 
 
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
+

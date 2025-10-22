@@ -1,11 +1,12 @@
 # data request
-#' Title
+
+#' create data request
 #'
-#' @param aoi_id
-#' @param dataset_id
-#' @param external_ref
+#' @param aoi_id ID for AOI to use for data request
+#' @param dataset_id ID for dataset to use for data request
+#' @param external_ref Optional name for data request
 #'
-#' @returns
+#' @returns DataRequest
 #' @export
 #'
 #' @examples
@@ -21,9 +22,9 @@ create_data_request <- function(aoi_id, dataset_id, external_ref = NULL) {
   )
 }
 
-#' Title
+#' list data requests
 #'
-#' @returns
+#' @returns DataRequest list
 #' @export
 #' @importFrom purrr pmap
 #' @examples
@@ -41,11 +42,11 @@ list_data_requests <- function() {
   })
 }
 
-#' Title
+#' get data request
 #'
-#' @param id
+#' @param id Data request ID
 #'
-#' @returns
+#' @returns DataRequest
 #' @export
 #'
 #' @examples

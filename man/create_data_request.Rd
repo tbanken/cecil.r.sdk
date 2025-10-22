@@ -2,13 +2,20 @@
 % Please edit documentation in R/data_request.R
 \name{create_data_request}
 \alias{create_data_request}
-\title{Title}
+\title{create data request}
 \usage{
 create_data_request(aoi_id, dataset_id, external_ref = NULL)
 }
 \arguments{
-\item{external_ref}{}
+\item{aoi_id}{ID for AOI to use for data request}
+
+\item{dataset_id}{ID for dataset to use for data request}
+
+\item{external_ref}{Optional name for data request}
+}
+\value{
+DataRequest
 }
 \description{
-Title
+create data request
 }

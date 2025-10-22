@@ -1,4 +1,4 @@
-Package: cecil
+Package: cecil.r.sdk
 Type: Package
 Title: Cecil SDK for R
 Version: 0.0.1

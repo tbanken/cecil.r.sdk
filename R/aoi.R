@@ -1,11 +1,11 @@
 # aoi
-#TODO test passing in geojson string
-#' Title
+
+#' create aoi
 #'
-#' @param external_ref
-#' @param geometry
+#' @param external_ref Optional name for AOI
+#' @param geometry geometry as list of lists or JSON
 #'
-#' @returns
+#' @returns AOIRecord
 #' @export
 #' @importFrom jsonlite fromJSON
 #' @examples
@@ -32,9 +32,9 @@ create_aoi <- function(external_ref, geometry) {
   )
 }
 
-#' Title
+#' list aois
 #'
-#' @returns
+#' @returns AOIRecord list
 #' @export
 #' @importFrom purrr pmap
 #' @examples
@@ -51,11 +51,11 @@ list_aois <- function() {
   })
 }
 
-#' Title
+#' get aoi
 #'
-#' @param id
+#' @param id AOI ID
 #'
-#' @returns
+#' @returns AOI
 #' @export
 #'
 #' @examples

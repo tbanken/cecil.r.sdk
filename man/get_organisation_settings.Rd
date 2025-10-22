@@ -2,10 +2,13 @@
 % Please edit documentation in R/account_management.R
 \name{get_organisation_settings}
 \alias{get_organisation_settings}
-\title{Title}
+\title{get organisation settings}
 \usage{
 get_organisation_settings()
 }
+\value{
+OrganisationSettings
+}
 \description{
-Title
+get organisation settings
 }

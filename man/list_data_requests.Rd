@@ -2,10 +2,13 @@
 % Please edit documentation in R/data_request.R
 \name{list_data_requests}
 \alias{list_data_requests}
-\title{Title}
+\title{list data requests}
 \usage{
 list_data_requests()
 }
+\value{
+DataRequest list
+}
 \description{
-Title
+list data requests
 }

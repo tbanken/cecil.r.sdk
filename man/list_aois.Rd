@@ -2,10 +2,13 @@
 % Please edit documentation in R/aoi.R
 \name{list_aois}
 \alias{list_aois}
-\title{Title}
+\title{list aois}
 \usage{
 list_aois()
 }
+\value{
+AOIRecord list
+}
 \description{
-Title
+list aois
 }

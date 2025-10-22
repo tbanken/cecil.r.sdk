@@ -2,13 +2,16 @@
 % Please edit documentation in R/account_management.R
 \name{get_user}
 \alias{get_user}
-\title{Title}
+\title{get user}
 \usage{
 get_user(id)
 }
 \arguments{
-\item{id}{}
+\item{id}{User ID}
+}
+\value{
+User
 }
 \description{
-Title
+get user
 }
