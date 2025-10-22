@@ -9,7 +9,7 @@
 #' @examples
 rotate_api_key <- function() {
   model <- RotateAPIKeyRequest$new()
-  resp <- cecil_request("/v0/api-key/rotate", "POST", model$as_list())
+  resp <- cecil_request("/v0/api-key/rotate", "POST", model$as_list(),TRUE)
   RotateAPIKey$new(resp$newApiKey)
 }
 
