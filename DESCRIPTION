@@ -23,8 +23,9 @@ Suggests:
     testthat (>= 3.0.0)
 Imports:
     purrr,
-    nanoparquet,
+    arrow,
     terra,
-    httr2
+    httr2,
+    sf
 Config/testthat/edition: 3
 RoxygenNote: 7.3.3
