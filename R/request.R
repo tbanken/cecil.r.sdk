@@ -19,7 +19,7 @@ get_package_version <- function(test=FALSE) {
   version
 }
 
-#' @importFrom httr2 request req_auth_basic req_method req_headers req_body_json req_perform resp_body_json
+#' @importFrom httr2 request req_auth_basic req_method req_headers req_body_json req_perform resp_body_json resp_status
 cecil_request <- function(endpoint, method = "GET", body = NULL, skip_auth = FALSE) {
   base_url <- "https://api.cecil.earth"
   api_key <- set_auth()
