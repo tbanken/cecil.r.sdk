@@ -26,7 +26,7 @@ create_aoi <- function(external_ref, geometry) {
   AOIRecord$new(
     resp$id,
     resp$externalRef,
-    resp$hectacres,
+    resp$hectares,
     resp$createdAt,
     resp$createdBy
   )
@@ -66,7 +66,7 @@ get_aoi <- function(id) {
     resp$id,
     resp$externalRef,
     resp$geometry,
-    resp$hectacres,
+    resp$hectares,
     resp$createdAt,
     resp$createdBy
   )
