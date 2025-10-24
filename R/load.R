@@ -23,10 +23,45 @@ load_terra <- function(data_request_id) {
 }
 
 #TODO fix metadata etc
-#' @importFrom terra rast metags
+#' @importFrom terra rast metags time
 rast_from_metadata <- function(metadata) {
-  raster <- rast(metadata$files$url)
-  names(raster) <- metadata$files$bands[[1]]$variable_name
+  #raster <- rast(metadata$files$url)
+  #names(raster) <- metadata$files$bands[[1]]$variable_name
+
+
+  all_bands <- list()
+
+  for (file_info in metadata$files) {
+    r <- rast(file_info$url)
+
+    for (band_info in file_info$bands) {
+      band <- r[[band_info$number]]
+      names(band) <- band_info$variable_name
+
+      # Set time if present
+      if (!is.na(band_info$time) && !is.na(band_info$time_pattern)) {
+        time(band) <- as.POSIXct(strptime(band_info$time, band_info$time_pattern))
+      }
+
+      all_bands[[length(all_bands) + 1]] <- band
+    }
+  }
+
+  # Combine all bands
+  result <- rast(all_bands)
+
+  # Sort by time only if time coordinates exist
+  if (!is.null(time(result)) && any(!is.na(time(result)))) {
+    # Get time values
+    time_vals <- time(result)
+
+    # Sort by time (NA times will go to the end)
+    time_order <- order(time_vals, na.last = TRUE)
+    result <- result[[time_order]]
+  }
+
+
+
   #metags(raster) <- c(
   #  paste0("provider_name=", metadata$provider_name),
   #  paste0("dataset_id=", metadata$dataset_id),
@@ -35,7 +70,7 @@ rast_from_metadata <- function(metadata) {
   #  paste0("aoi_id=", metadata$aoi_id),
   #  paste0("data_request_id=", metadata$data_request_id)
   #)
-  raster
+  result
 }
 
 #' load sf
