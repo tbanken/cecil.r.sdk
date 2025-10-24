@@ -56,7 +56,6 @@ list_users <- function() {
 get_user <- function(id) {
   full_endpoint <- paste0("/v0/users/", id)
   resp <- cecil_request(full_endpoint)
-  print(resp)
   User$new(
     resp$id,
     resp$firstName,
