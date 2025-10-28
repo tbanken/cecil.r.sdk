@@ -23,7 +23,7 @@ get_package_version <- function(test=FALSE) {
 cecil_request <- function(endpoint, method = "GET", body = NULL, skip_auth = FALSE) {
   base_url <- "https://api.cecil.earth"
   api_key <- set_auth()
-  if (api_key == "") stop("Set your API key with set_cecil_api_key()")
+  if (api_key == "") stop("Set your Cecil API key before using package functions")
 
   version <- get_package_version()
 
