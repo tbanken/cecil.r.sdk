@@ -30,20 +30,16 @@ rast_from_metadata <- function(metadata) {
 
 
   all_bands <- list()
-  #print(metadata$files)
   urls <- metadata$files$url
   bands <- metadata$files$bands
 
   for (url in urls) {
-    #print(file_info)
     r <- rast(url)
 
     for (band_info in bands) {
 
       band <- r[[band_info$number]]
       names(band) <- band_info$variable_name
-      print(band_info$time)
-      print(band_info$time_pattern)
       # Set time if present
       if (
         length(band_info$time) > 0 &&
