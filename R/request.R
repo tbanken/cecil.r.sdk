@@ -1,5 +1,4 @@
 # TODO formalize errors
-# TODO fix hectacre name
 # TODO fix camelCase -> snake_case
 # read in datetime correctly
 
