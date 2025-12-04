@@ -1,5 +1,7 @@
 library(R6)
 
+#TODO DataRequest obsolete, add new models
+
 toCamel <- function(x) {
   gsub("_(.)", "\\U\\1", x, perl = TRUE)
 }
