@@ -1,5 +1,7 @@
 library(R6)
 
+#TODO DataRequest obsolete, add new models
+
 toCamel <- function(x) {
   gsub("_(.)", "\\U\\1", x, perl = TRUE)
 }
@@ -135,100 +137,6 @@ AOICreate <- R6Class("AOICreate",
   )
 )
 
-# DataRequest Model
-DataRequest <- R6Class("DataRequest",
-  public = list(
-    id = NULL,
-    aoi_id = NULL,
-    dataset_id = NULL,
-    created_at = NULL,
-    created_by = NULL,
-    external_ref = NULL,
-    initialize = function(id, aoi_id, dataset_id, external_ref, created_at, created_by) {
-      self$id <- id
-      self$aoi_id <- aoi_id
-      self$dataset_id <- dataset_id
-      self$external_ref <- external_ref
-      self$created_at <- created_at
-      self$created_by <- created_by
-    },
-    as_list = function() {
-      vals <- list(
-        id = self$id,
-        aoi_id = self$aoi_id,
-        dataset_id = self$dataset_id,
-        external_ref = self$external_ref,
-        created_at = self$created_at,
-        created_by = self$created_by
-      )
-      setNames(vals, toCamel(names(vals)))
-    }
-  )
-)
-
-# DataRequestCreate Model
-DataRequestCreate <- R6Class("DataRequestCreate",
-  public = list(
-    aoi_id = NULL,
-    dataset_id = NULL,
-    external_ref = NULL,
-    initialize = function(aoi_id, dataset_id, external_ref) {
-      self$aoi_id <- aoi_id
-      self$dataset_id <- dataset_id
-      self$external_ref <- external_ref
-    },
-    as_list = function() {
-      vals <- list(
-        aoi_id = self$aoi_id,
-        dataset_id = self$dataset_id,
-        external_ref = self$external_ref
-      )
-      setNames(vals, toCamel(names(vals)))
-    }
-  )
-)
-
-# DataRequestMetadata Model
-DataRequestMetadata <- R6Class("DataRequestMetadata",
-  public = list(
-    provider_name = NULL,
-    dataset_id = NULL,
-    dataset_name = NULL,
-    dataset_crs = NULL,
-    aoi_id = NULL,
-    data_request_id = NULL,
-    files = NULL,
-    initialize = function(provider_name,
-                          dataset_id,
-                          dataset_name,
-                          dataset_crs,
-                          aoi_id,
-                          data_request_id,
-                          files) {
-      self$provider_name <- provider_name
-      self$dataset_id <- dataset_id
-      self$dataset_name <- dataset_name
-      self$dataset_crs <- dataset_crs
-      self$aoi_id <- aoi_id
-      self$data_request_id <- data_request_id
-      self$files <- files
-    },
-    as_list = function() {
-      vals <- list(
-        provider_name <- self$provider_name,
-        dataset_id <- self$dataset_id,
-        dataset_name <- self$dataset_name,
-        dataset_crs <- self$dataset_crs,
-        aoi_id <- self$aoi_id,
-        data_request_id <- self$data_request_id,
-        files <- self$files
-      )
-      setNames(vals, toCamel(names(vals)))
-    }
-  )
-)
-
-
 # OrganisationSettings Model
 OrganisationSettings <- R6Class("OrganisationSettings",
   public = list(
@@ -292,5 +200,209 @@ RotateAPIKeyRequest <- R6Class("RotateAPIKeyRequest",
   public = list(
     initialize = function() {},
     as_list = function() list()
+  )
+)
+
+library(R6)
+
+toCamel <- function(x) {
+  gsub("_(.)", "\\U\\1", x, perl = TRUE)
+}
+
+# Bucket Model
+Bucket <- R6Class("Bucket",
+  public = list(
+    name = NULL,
+    prefix = NULL,
+    initialize = function(name, prefix) {
+      self$name <- name
+      self$prefix <- prefix
+    },
+    as_list = function() {
+      vals <- list(
+        name = self$name,
+        prefix = self$prefix
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# BucketCredentials Model
+BucketCredentials <- R6Class("BucketCredentials",
+  public = list(
+    access_key_id = NULL,
+    secret_access_key = NULL,
+    session_token = NULL,
+    region = NULL,
+    expiration = NULL,
+    initialize = function(access_key_id, secret_access_key, session_token, region, expiration) {
+      self$access_key_id <- access_key_id
+      self$secret_access_key <- secret_access_key
+      self$session_token <- session_token
+      self$region <- region
+      self$expiration <- expiration
+    },
+    as_list = function() {
+      vals <- list(
+        access_key_id = self$access_key_id,
+        secret_access_key = self$secret_access_key,
+        session_token = self$session_token,
+        region = self$region,
+        expiration = self$expiration
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# Band Model
+Band <- R6Class("Band",
+  public = list(
+    number = NULL,
+    name = NULL,
+    dtype = NULL,
+    nodata = NULL,
+    initialize = function(number, name, dtype, nodata = NULL) {
+      self$number <- number
+      self$name <- name
+      self$dtype <- dtype
+      self$nodata <- nodata
+    },
+    as_list = function() {
+      vals <- list(
+        number = self$number,
+        name = self$name,
+        dtype = self$dtype,
+        nodata = self$nodata
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# File Model
+File <- R6Class("File",
+  public = list(
+    bands = NULL,
+    initialize = function(bands) {
+      self$bands <- bands
+    },
+    as_list = function() {
+      vals <- list(
+        bands = lapply(self$bands, function(b) b$as_list())
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# SubscriptionListFiles Model
+SubscriptionListFiles <- R6Class("SubscriptionListFiles",
+  public = list(
+    provider_name = NULL,
+    dataset_id = NULL,
+    dataset_name = NULL,
+    aoi_id = NULL,
+    subscription_id = NULL,
+    bucket = NULL,
+    credentials = NULL,
+    allowed_actions = NULL,
+    file_mapping = NULL,
+    initialize = function(provider_name, dataset_id, dataset_name, aoi_id, subscription_id,
+                         bucket, credentials, allowed_actions, file_mapping) {
+      self$provider_name <- provider_name
+      self$dataset_id <- dataset_id
+      self$dataset_name <- dataset_name
+      self$aoi_id <- aoi_id
+      self$subscription_id <- subscription_id
+      self$bucket <- bucket
+      self$credentials <- credentials
+      self$allowed_actions <- allowed_actions
+      self$file_mapping <- file_mapping
+    },
+    as_list = function() {
+      vals <- list(
+        provider_name = self$provider_name,
+        dataset_id = self$dataset_id,
+        dataset_name = self$dataset_name,
+        aoi_id = self$aoi_id,
+        subscription_id = self$subscription_id,
+        bucket = self$bucket$as_list(),
+        credentials = self$credentials$as_list(),
+        allowed_actions = self$allowed_actions,
+        file_mapping = lapply(self$file_mapping, function(f) f$as_list())
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# SubscriptionParquetFiles Model
+SubscriptionParquetFiles <- R6Class("SubscriptionParquetFiles",
+  public = list(
+    files = NULL,
+    initialize = function(files) {
+      self$files <- files
+    },
+    as_list = function() {
+      vals <- list(
+        files = self$files
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# Subscription Model
+Subscription <- R6Class("Subscription",
+  public = list(
+    id = NULL,
+    aoi_id = NULL,
+    dataset_id = NULL,
+    external_ref = NULL,
+    created_at = NULL,
+    created_by = NULL,
+    initialize = function(id, aoi_id, dataset_id, external_ref = NULL, created_at, created_by) {
+      self$id <- id
+      self$aoi_id <- aoi_id
+      self$dataset_id <- dataset_id
+      self$external_ref <- external_ref
+      self$created_at <- created_at
+      self$created_by <- created_by
+    },
+    as_list = function() {
+      vals <- list(
+        id = self$id,
+        aoi_id = self$aoi_id,
+        dataset_id = self$dataset_id,
+        external_ref = self$external_ref,
+        created_at = self$created_at,
+        created_by = self$created_by
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# SubscriptionCreate Model
+SubscriptionCreate <- R6Class("SubscriptionCreate",
+  public = list(
+    aoi_id = NULL,
+    dataset_id = NULL,
+    external_ref = NULL,
+    initialize = function(aoi_id, dataset_id, external_ref = NULL) {
+      self$aoi_id <- aoi_id
+      self$dataset_id <- dataset_id
+      self$external_ref <- external_ref
+    },
+    as_list = function() {
+      vals <- list(
+        aoi_id = self$aoi_id,
+        dataset_id = self$dataset_id,
+        external_ref = self$external_ref
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
   )
 )
