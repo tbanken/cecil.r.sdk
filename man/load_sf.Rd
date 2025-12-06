@@ -2,16 +2,21 @@
 % Please edit documentation in R/load.R
 \name{load_sf}
 \alias{load_sf}
-\title{load sf}
+\title{}
 \usage{
-load_sf(data_request_id)
+load_sf(subscription_id)
 }
 \arguments{
-\item{data_request_id}{ID for data request to load}
+\item{subscription_id}{ID for subscription to load}
 }
 \value{
 sf
 }
 \description{
-load sf
+all_bands <- list()
+  urls <- metadata$files$url
+  bands <- metadata$files$bands
+}
+\details{
+
 }

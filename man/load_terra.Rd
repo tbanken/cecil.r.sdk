@@ -4,10 +4,10 @@
 \alias{load_terra}
 \title{load terra}
 \usage{
-load_terra(data_request_id)
+load_terra(subscription_id)
 }
 \arguments{
-\item{data_request_id}{ID for data request to load}
+\item{subscription_id}{ID for subscription to load}
 }
 \value{
 SpatRaster
