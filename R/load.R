@@ -115,66 +115,6 @@ rast_from_metadata <- function(metadata) {
 }
 
 
-
-
-
-
-
-
-
-
-
-#' #TODO fix metadata etc
-#' #' @importFrom terra rast metags time
-#' rast_from_metadata <- function(metadata) {
-#'
-#'   all_bands <- list()
-#'   urls <- metadata$files$url
-#'   bands <- metadata$files$bands
-#'
-#'   for (url in urls) {
-#'     r <- rast(url)
-#'
-#'     for (band_info in bands) {
-#'
-#'       band <- r[[band_info$number]]
-#'       names(band) <- band_info$variable_name
-#'       # Set time if present
-#'       if (
-#'         length(band_info$time) > 0 &&
-#'         length(band_info$time_pattern) > 0 &&
-#'         !all(band_info$time == "") &&
-#'         !all(band_info$time_pattern == "") &&
-#'         !all(is.na(band_info$time)) &&
-#'         !all(is.na(band_info$time_pattern))
-#'       ) {
-#'         time(band) <- as.POSIXct(strptime(band_info$time, band_info$time_pattern))
-#'       }
-#'
-#'
-#'       all_bands[[length(all_bands) + 1]] <- band
-#'     }
-#'   }
-#'
-#'   # Combine all bands
-#'   result <- rast(all_bands)
-#'
-#'   # Sort by time only if time coordinates exist
-#'   if (!is.null(time(result)) && any(!is.na(time(result)))) {
-#'     # Get time values
-#'     time_vals <- time(result)
-#'
-#'     # Sort by time (NA times will go to the end)
-#'     time_order <- order(time_vals, na.last = TRUE)
-#'     result <- result[[time_order]]
-#'   }
-#'
-#'
-#'
-#'
-#'   result
-#' }
-
 #' load sf
 #'
 #' @param subscription_id ID for subscription to load

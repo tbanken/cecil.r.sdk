@@ -2,7 +2,7 @@
 % Please edit documentation in R/load.R
 \name{load_sf}
 \alias{load_sf}
-\title{}
+\title{load sf}
 \usage{
 load_sf(subscription_id)
 }
@@ -13,10 +13,5 @@ load_sf(subscription_id)
 sf
 }
 \description{
-all_bands <- list()
-  urls <- metadata$files$url
-  bands <- metadata$files$bands
-}
-\details{
-
+load sf
 }
