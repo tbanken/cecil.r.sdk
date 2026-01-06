@@ -103,14 +103,14 @@ rast_from_metadata <- function(metadata) {
     }
   }
   result <- rast(all_bands)
-  metags(result) <- c(
-   paste0("provider_name=", metadata$provider_name),
-   paste0("dataset_id=", metadata$dataset_id),
-   paste0("dataset_name=", metadata$dataset_name),
-   paste0("dataset_crs=", metadata$dataset_crs),
-   paste0("aoi_id=", metadata$aoi_id),
-   paste0("data_request_id=", metadata$data_request_id)
-  )
+  # metags(result) <- c(
+  #  paste0("provider_name=", metadata$provider_name),
+  #  paste0("dataset_id=", metadata$dataset_id),
+  #  paste0("dataset_name=", metadata$dataset_name),
+  #  paste0("dataset_crs=", metadata$dataset_crs),
+  #  paste0("aoi_id=", metadata$aoi_id),
+  #  paste0("data_request_id=", metadata$data_request_id)
+  # )
   result
 }
 
