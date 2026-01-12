@@ -90,3 +90,25 @@ update_organisation_settings <- function(monthly_data_request_limit = 50000) {
   resp <- cecil_request("/v0/organisation/settings", method = "POST", body = model$as_list())
   OrganisationSettings$new(monthly_data_request_limit = resp$monthlyDataRequestLimit)
 }
+
+#' List datasets
+#'
+#' @returns Dataset list
+#' @export
+#' @importFrom purrr pmap
+#' @examples
+list_datasets <- function() {
+  resp <- cecil_request("/v0/datasets")
+  pmap(resp$records, function(id, name, provider_name, category, type, crs, version_number, version_date) {
+    Dataset$new(
+      id,
+      name,
+      provider_name,
+      category,
+      type,
+      crs,
+      version_number,
+      version_date
+    )
+  })
+}

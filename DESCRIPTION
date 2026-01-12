@@ -26,6 +26,8 @@ Imports:
     arrow,
     terra,
     httr2,
-    sf
+    sf,
+    paws,
+    jsonlite
 Config/testthat/edition: 3
 RoxygenNote: 7.3.3

@@ -406,3 +406,40 @@ SubscriptionCreate <- R6Class("SubscriptionCreate",
     }
   )
 )
+
+# Dataset Model
+Dataset <- R6Class("Dataset",
+   public = list(
+     id = NULL,
+     name = NULL,
+     provider_name = NULL,
+     category = NULL,
+     type = NULL,
+     crs = NULL,
+     version_number = NULL,
+     version_date = NULL,
+     initialize = function(id, name, provider_name, category, type, crs, version_number, version_date) {
+       self$id <- id
+       self$name <- name
+       self$provider_name <- provider_name
+       self$category <- category
+       self$type <- type
+       self$crs <- crs
+       self$version_number <- version_number
+       self$version_date <- version_date
+     },
+     as_list = function() {
+       vals <- list(
+         id = self$id,
+         name = self$name,
+         provider_name = self$provider_name,
+         category = self$category,
+         type = self$type,
+         crs = self$crs,
+         version_number = self$version_number,
+         version_date = self$version_date
+       )
+       setNames(vals, toCamel(names(vals)))
+     }
+   )
+)
