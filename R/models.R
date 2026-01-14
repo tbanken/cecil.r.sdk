@@ -443,3 +443,41 @@ Dataset <- R6Class("Dataset",
      }
    )
 )
+
+# WebhookConfigure Model
+WebhookConfigure <- R6Class("WebhookConfigure",
+  public = list(
+    url = NULL,
+    secret = NULL,
+    initialize = function(url, secret = NULL) {
+      self$url <- url
+      self$secret <- secret
+    },
+    as_list = function() {
+      vals <- list(
+        url = self$url,
+        secret = self$secret
+      )
+      setNames(vals, toCamel(names(vals)))
+    }
+  )
+)
+
+# Webhook Model
+Webhook <- R6Class("Webhook",
+   public = list(
+     id = NULL,
+     url = NULL,
+     initialize = function(id, url) {
+       self$id <- id
+       self$url <- url
+     },
+     as_list = function() {
+       vals <- list(
+         id = self$id,
+         url = self$url
+       )
+       setNames(vals, toCamel(names(vals)))
+     }
+   )
+)

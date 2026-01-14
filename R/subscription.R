@@ -1,5 +1,4 @@
 # subscription
-#TODO test changes to make sure all functions work as before
 #' create subscription
 #'
 #' @param aoi_id ID for AOI to use for subscription
